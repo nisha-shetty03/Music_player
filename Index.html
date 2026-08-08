@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Turntable — Music Player</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <p class="eyebrow"><span class="dot" id="liveDot"></span><span id="statusText">Paused</span></p>
+
+  <div class="card">
+    <div class="stage">
+      <div class="disc-wrap" id="disc">
+        <svg viewBox="0 0 150 150" width="150" height="150">
+          <circle cx="75" cy="75" r="74" fill="#15111f"/>
+          <circle cx="75" cy="75" r="74" fill="none" stroke="#372e52" stroke-width="1"/>
+          <circle cx="75" cy="75" r="62" fill="none" stroke="#2a2340" stroke-width="1"/>
+          <circle cx="75" cy="75" r="50" fill="none" stroke="#2a2340" stroke-width="1"/>
+          <circle cx="75" cy="75" r="38" fill="none" stroke="#2a2340" stroke-width="1"/>
+          <circle cx="75" cy="75" r="27" fill="url(#labelGrad)"/>
+          <circle cx="75" cy="75" r="27" fill="none" stroke="#a9803b" stroke-width="1"/>
+          <circle cx="75" cy="75" r="4" fill="#0b0a14"/>
+          <defs>
+            <radialGradient id="labelGrad" cx="35%" cy="35%" r="75%">
+              <stop offset="0%" stop-color="#e8b34c"/>
+              <stop offset="100%" stop-color="#a9803b"/>
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+      <svg class="tonearm" id="tonearm" viewBox="0 0 76 76">
+        <circle cx="70" cy="8" r="6" fill="#372e52"/>
+        <line x1="70" y1="8" x2="18" y2="62" stroke="#9a8fb0" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="18" cy="62" r="4" fill="#e8b34c"/>
+      </svg>
+    </div>
+
+    <div class="track-info">
+      <p class="track-title" id="trackTitle">—</p>
+      <p class="track-artist" id="trackArtist">—</p>
+    </div>
+
+    <div class="progress-row">
+      <span class="time" id="currentTime">0:00</span>
+      <input type="range" id="progress" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+      <span class="time right" id="duration">0:00</span>
+    </div>
+
+    <div class="transport">
+      <button class="btn-skip" id="prevBtn" aria-label="Previous track">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zM20 6L9 12l11 6V6z"/></svg>
+      </button>
+      <button class="btn-play" id="playBtn" aria-label="Play">
+        <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      </button>
+      <button class="btn-skip" id="nextBtn" aria-label="Next track">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6h2v12h-2zM4 6l11 6-11 6V6z"/></svg>
+      </button>
+    </div>
+
+    <div class="util-row">
+      <div class="volume">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="0.7" aria-label="Volume">
+      </div>
+      <label class="autoplay-label">
+        Autoplay
+        <input type="checkbox" id="autoplay" checked>
+        <span class="switch"></span>
+      </label>
+    </div>
+
+    <ul class="playlist" id="playlist"></ul>
+  </div>
+
+  <p class="hint">space to play/pause · click a track to queue it</p>
+</div>
+
+<audio id="audio" preload="metadata"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
