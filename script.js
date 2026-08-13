@@ -1,8 +1,8 @@
 const tracks = [
-  { title: "Golden Hour",   artist: "Lumen",     src: "audio/golden-hour.wav" },
-  { title: "Night Drive",   artist: "Lumen",     src: "audio/night-drive.wav" },
-  { title: "Static Bloom",  artist: "Aria Vale",  src: "audio/static-bloom.wav" },
-  { title: "Paper Weather", artist: "Aria Vale",  src: "audio/paper-weather.wav" },
+  { title: "Golden Hour",   artist: "Lumen",     src: "audio/audio/golden-hour.wav" },
+  { title: "Night Drive",   artist: "Lumen",     src: "audio/audio/night-drive.wav" },
+  { title: "Static Bloom",  artist: "Aria Vale",  src: "audio/audio/static-bloom.wav" },
+  { title: "Paper Weather", artist: "Aria Vale",  src: "audio/audio/paper-weather.wav" },
 ];
 
 const audio       = document.getElementById('audio');
@@ -82,6 +82,7 @@ function updateProgressFill(pct){
 }
 
 function setPlayingUI(playing){
+  document.querySelector('.app').classList.toggle('is-playing', playing);
   disc.classList.toggle('spinning', playing);
   tonearm.classList.toggle('playing', playing);
   playIcon.style.display = playing ? 'none' : 'block';
