@@ -1,8 +1,8 @@
 const tracks = [
-  { title: "Golden Hour",   artist: "Lumen",     src: "audio/audio/golden-hour.wav" },
-  { title: "Night Drive",   artist: "Lumen",     src: "audio/audio/night-drive.wav" },
-  { title: "Static Bloom",  artist: "Aria Vale",  src: "audio/audio/static-bloom.wav" },
-  { title: "Paper Weather", artist: "Aria Vale",  src: "audio/audio/paper-weather.wav" },
+  { title: "Golden Hour",   artist: "Lumen",     src: "audio/golden-hour.wav" },
+  { title: "Night Drive",   artist: "Lumen",     src: "audio/night-drive.wav" },
+  { title: "Static Bloom",  artist: "Aria Vale",  src: "audio/static-bloom.wav" },
+  { title: "Paper Weather", artist: "Aria Vale",  src: "audio/paper-weather.wav" },
 ];
 
 const audio       = document.getElementById('audio');
@@ -144,7 +144,6 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Preload durations for the whole playlist without playing them
 tracks.forEach((t, i) => {
   const probe = new Audio();
   probe.preload = 'metadata';
